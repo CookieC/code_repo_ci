@@ -38,17 +38,12 @@ test:
   before_script:
     - *inject-gopath
   script:
-    - go test ./..
+    - go test .
 
 build:
   stage: build
   dependencies:
     - dep
-  image: docker:latest
-  services:
-    - docker:dind
-  before_script:
-    - make login
   script:
     - make image-build
 

@@ -6,7 +6,6 @@ IMAGE?=${REPOSITORY}:${BRANCH}-${COMMIT}
 PORT?=8080
 
 REGISTRY_USERNAME?=sys-infraservice
-REGISTRY_PASS?=":wH3`:fF#,<)/;'#a>8}BW:s
 
 image-build:
 	docker build -t ${IMAGE} -f Dockerfile .
@@ -15,7 +14,7 @@ image-run:
 	docker run -p ${PORT}:${PORT} --rm ${IMAGE}
 
 login:
-	docker login registry.sensetime.com -u ${REGISTRY_USERNAME} -p ${REGISTRY_PASS}
+	docker login registry.sensetime.com -u ${REGISTRY_USERNAME} --password-stdin < ./data
 
 push:
 	docker push ${IMAGE}
