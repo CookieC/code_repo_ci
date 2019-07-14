@@ -17,6 +17,5 @@ install:
 script:
   - go test .
   - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" quay.io;
-#  - make login
-  - docker build -t "$REPO":"$COMMIT" Dockerfile .
-  - docker push "$REPO":"$COMMIT"
+  - ./scripts/build.sh
+  - ./scripts/push.sh
