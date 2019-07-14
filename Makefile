@@ -1,6 +1,6 @@
 PROJECT_NAME?=hello_flux_test
 REPOSITORY?=registry.sensetime.com/infraservice/${PROJECT_NAME}
-BRANCH?=master
+BRANCH?=$(shell git branch | grep \* | cut -d ' ' -f2)
 COMMIT?=$(shell git rev-parse --short HEAD)
 IMAGE?=${REPOSITORY}:${BRANCH}-${COMMIT}
 PORT?=8080

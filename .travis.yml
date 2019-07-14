@@ -18,5 +18,5 @@ script:
   - go test .
   - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" quay.io;
 #  - make login
-  - make image-build
-  - make push
+  - docker build -t ${REPO}:${COMMIT} Dockerfile .
+  - docker push ${REPO}:${COMMIT}
