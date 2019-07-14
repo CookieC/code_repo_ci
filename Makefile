@@ -7,6 +7,9 @@ PORT?=8080
 
 REGISTRY_USERNAME?=sys-infraservice
 
+test:
+	go test .
+
 image-build:
 	docker build -t ${IMAGE} -f Dockerfile .
 
