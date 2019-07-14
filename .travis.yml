@@ -8,12 +8,15 @@ go:
 services:
   - docker
 
+env:
+  - GROUP=quay.io/cookiec COMMIT="${TRAVIS_COMMIT}" TAG="${TRAVIS_TAG}" REPO=hello_flux_test;
+
 install:
   - go install
 
 script:
   - go test .
-  - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" registry.sensetime.com;
+  - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" quay.io;
 #  - make login
   - make image-build
   - make push
