@@ -16,5 +16,5 @@ image-run:
 login:
 	docker login registry.sensetime.com -u ${REGISTRY_USERNAME} --password-stdin < ./data
 
-push:
+push: login
 	docker push ${IMAGE}

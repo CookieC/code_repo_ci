@@ -40,17 +40,17 @@ test:
   script:
     - go test .
 
-build:
-  stage: build
-  dependencies:
-    - dep
-  script:
-    - make image-build
+#build:
+#  stage: build
+#  dependencies:
+#    - dep
+#  script:
+#    - make image-build
 
 push:
   stage: push
-  before_script:
-    - make login
+#  before_script:
+#    - make login
   script:
     - make push
 
