@@ -8,18 +8,12 @@ go:
 services:
   - docker
 
-
 install:
   - go install
 
-env:
-  - IMAGE=
-
 script:
   - go test .
-
-after_success:
-#  - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" registry.sensetime.com;
-  - make login
-  - make build
+  - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}" registry.sensetime.com;
+#  - make login
+  - make image-build
   - make push
